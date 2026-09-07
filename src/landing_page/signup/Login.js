@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./signup.css";
 
-function Signup() {
+function Login()  {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    name: "",
-    mobile: "",
     email: "",
     password: "",
   });
@@ -23,11 +22,11 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setMessage("");
+    setMessage("") ;
 
     try {
       const response = await fetch(
-        "http://localhost:3002/api/auth/signup",
+        "http://localhost:3002/api/auth/login",
         {
           method: "POST",
           headers: {
@@ -35,33 +34,33 @@ function Signup() {
           },
 
           body: JSON.stringify({
-            name: formData.name,
-            mobile: formData.mobile,
             email: formData.email,
             password: formData.password,
           }),
         }
       );
 
-      const data = await response.json();
+      const data = await response.json() ;
 
-      if (response.ok) {
-        setMessage("Account created successfully!");
+      
 
-        setFormData({
-          name: "",
-          mobile: "",
-          email: "",
-          password: "",
-        });
-      } else {
-        setMessage(data.message || "Signup failed");
+       if (response.ok) {
+         console.log("Logged in user:", data.user);
+
+         localStorage.setItem("userName", data.user.name);
+
+         window.location.href = `http://localhost:3001/?userName=${encodeURIComponent(data.user.name)}`;
+
+        }
+
+       else {
+         setMessage(data.message || "Login failed");
       }
     } catch (error) {
-      console.error("Signup Error:", error);
-      setMessage("Unable to connect to server");
+      console.error("Login Error:", error);
+      setMessage("Unable to connect to server") ;
     }
-  };
+  } ;
 
   return (
     <div className="signup-container">
@@ -71,11 +70,11 @@ function Signup() {
         <div>
           <h1>Zerodha</h1>
 
-          <h2>Invest in your future</h2>
+          <h2>Welcome Back</h2>
 
           <p>
-            Open your account and start investing in stocks,
-            mutual funds and more.
+            Login to your account and continue
+            your investing journey.
           </p>
         </div>
       </div>
@@ -84,37 +83,13 @@ function Signup() {
       <div className="signup-right">
         <div className="signup-card">
 
-          <h2>Create an account</h2>
+          <h2>Login</h2>
 
           <p className="subtitle">
-            Start your investing journey
+            Login to your account
           </p>
 
           <form onSubmit={handleSubmit}>
-
-            {/* Full Name */}
-            <label>Full Name</label>
-
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter your full name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-
-            {/* Mobile Number */}
-            <label>Mobile Number</label>
-
-            <input
-              type="tel"
-              name="mobile"
-              placeholder="Enter mobile number"
-              value={formData.mobile}
-              onChange={handleChange}
-              required
-            />
 
             {/* Email */}
             <label>Email</label>
@@ -134,40 +109,40 @@ function Signup() {
             <input
               type="password"
               name="password"
-              placeholder="Create password"
+              placeholder="Enter password"
               value={formData.password}
               onChange={handleChange}
               required
             />
 
-            {/* Signup Button */}
+            {/* Login Button */}
             <button type="submit">
-              Sign Up
+              Login
             </button>
 
           </form>
 
-          {/* Backend Response */}
+          {/* Error Message */}
           {message && (
             <p className="login-text">
               {message}
             </p>
           )}
 
-          {/* Login */}
+          {/* Signup */}
           <p className="login-text">
-            Already have an account?
-            <span
-              onClick={() => navigate("/login")}
-              style={{
-                cursor: "pointer",
-                color: "#387ed1",
-                fontWeight: "500",
-                marginLeft: "5px",
-              }}
-            >
-              Login
-            </span>
+            Don't have an account?
+
+           <span
+           onClick={() => navigate("/signup")}
+            style={{
+             cursor: "pointer",
+              color: "#387ed1",
+              fontWeight: "500",
+           }}
+>
+  {" "}Sign Up
+</span>
           </p>
 
         </div>
@@ -177,4 +152,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Login;
