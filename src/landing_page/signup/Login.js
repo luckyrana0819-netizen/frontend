@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./signup.css";
 
-function Login()  {
+function Login() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -22,11 +22,11 @@ function Login()  {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setMessage("") ;
+    setMessage("");
 
     try {
       const response = await fetch(
-        "http://https://backend-e8zh.onrender.com/api/auth/login",
+        "https://backend-e8zh.onrender.com/api/auth/login",
         {
           method: "POST",
           headers: {
@@ -40,27 +40,25 @@ function Login()  {
         }
       );
 
-      const data = await response.json() ;
+      const data = await response.json();
 
-      
+      if (response.ok) {
+        console.log("Logged in user:", data.user);
 
-       if (response.ok) {
-         console.log("Logged in user:", data.user);
+        localStorage.setItem("userName", data.user.name);
 
-         localStorage.setItem("userName", data.user.name);
-
-         window.location.href = `http://localhost:3001/?userName=${encodeURIComponent(data.user.name)}`;
-
-        }
-
-       else {
-         setMessage(data.message || "Login failed");
+        // Redirect to LIVE dashboard
+        window.location.href = `https://dashboard-zerodha1.vercel.app/?userName=${encodeURIComponent(
+          data.user.name
+        )}`;
+      } else {
+        setMessage(data.message || "Login failed");
       }
     } catch (error) {
       console.error("Login Error:", error);
-      setMessage("Unable to connect to server") ;
+      setMessage("Unable to connect to server");
     }
-  } ;
+  };
 
   return (
     <div className="signup-container">
@@ -133,16 +131,16 @@ function Login()  {
           <p className="login-text">
             Don't have an account?
 
-           <span
-           onClick={() => navigate("/signup")}
-            style={{
-             cursor: "pointer",
-              color: "#387ed1",
-              fontWeight: "500",
-           }}
->
-  {" "}Sign Up
-</span>
+            <span
+              onClick={() => navigate("/signup")}
+              style={{
+                cursor: "pointer",
+                color: "#387ed1",
+                fontWeight: "500",
+              }}
+            >
+              {" "}Sign Up
+            </span>
           </p>
 
         </div>
