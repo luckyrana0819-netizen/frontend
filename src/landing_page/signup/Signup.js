@@ -27,13 +27,12 @@ function Signup() {
 
     try {
       const response = await fetch(
-        "http://https://backend-e8zh.onrender.com/api/auth/signup",
+        "https://backend-e8zh.onrender.com/api/auth/signup",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-
           body: JSON.stringify({
             name: formData.name,
             mobile: formData.mobile,
@@ -66,7 +65,6 @@ function Signup() {
   return (
     <div className="signup-container">
 
-      {/* Left Section */}
       <div className="signup-left">
         <div>
           <h1>Zerodha</h1>
@@ -80,7 +78,6 @@ function Signup() {
         </div>
       </div>
 
-      {/* Right Section */}
       <div className="signup-right">
         <div className="signup-card">
 
@@ -92,7 +89,6 @@ function Signup() {
 
           <form onSubmit={handleSubmit}>
 
-            {/* Full Name */}
             <label>Full Name</label>
 
             <input
@@ -104,7 +100,6 @@ function Signup() {
               required
             />
 
-            {/* Mobile Number */}
             <label>Mobile Number</label>
 
             <input
@@ -116,7 +111,6 @@ function Signup() {
               required
             />
 
-            {/* Email */}
             <label>Email</label>
 
             <input
@@ -128,7 +122,6 @@ function Signup() {
               required
             />
 
-            {/* Password */}
             <label>Password</label>
 
             <input
@@ -140,23 +133,21 @@ function Signup() {
               required
             />
 
-            {/* Signup Button */}
             <button type="submit">
               Sign Up
             </button>
 
           </form>
 
-          {/* Backend Response */}
           {message && (
             <p className="login-text">
               {message}
             </p>
           )}
 
-          {/* Login */}
           <p className="login-text">
             Already have an account?
+
             <span
               onClick={() => navigate("/login")}
               style={{
