@@ -1,59 +1,97 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <footer style={{ backgroundColor: "rgb(250, 250, 250)" }}>
       <div className="container border-top mt-5">
         <div className="row mt-5">
-          <div className="col">
-            <img src="media/images/logo.svg" style={{ width: "50%" }} />
-            <p>
-              &copy; 2010 - 2024, Not Zerodha Broking Ltd. All rights reserved.
+
+          {/* Logo & Copyright */}
+          <div className="col-12 col-md-3 mb-4">
+            <Link to="/">
+              <img
+                src="/media/images/logo.svg"
+                style={{ width: "150px", maxWidth: "80%" }}
+                alt="Zerodha Logo"
+              />
+            </Link>
+
+            <p className="mt-3">
+              &copy; 2010 - 2024, Not Zerodha Broking Ltd.
+              All rights reserved.
             </p>
           </div>
-          <div className="col">
-            <p>Company</p>
-            <a href="">About</a>
+
+          {/* Company */}
+          <div className="col-6 col-md-3 mb-4">
+            <p className="fw-bold">Company</p>
+
+            <Link to="/about">About</Link>
             <br />
-            <a href="">Products</a>
+
+            <Link to="/product">Products</Link>
             <br />
-            <a href="">Pricing</a>
+
+            <Link to="/pricing">Pricing</Link>
             <br />
-            <a href="">Referral programme</a>
+
+            <a href="/signup">Referral programme</a>
             <br />
-            <a href="">Careers</a>
+
+            <a href="/about">Careers</a>
             <br />
-            <a href="">Zerodha.tech</a>
+
+            <a href="/product">Zerodha.tech</a>
             <br />
-            <a href="">Press & media</a>
+
+            <a href="/about">Press & media</a>
             <br />
-            <a href="">Zerodha cares (CSR)</a>
-            <br />
-          </div>
-          <div className="col">
-            <p>Support</p>
-            <a href="">Contact</a>
-            <br />
-            <a href="">Support portal</a>
-            <br />
-            <a href="">Z-Connect blog</a>
-            <br />
-            <a href="">List of charges</a>
-            <br />
-            <a href="">Downloads & resources</a>
+
+            <a href="/support">Zerodha cares (CSR)</a>
             <br />
           </div>
-          <div className="col">
-            <p>Account</p>
-            <a href="">Open an account</a>
+
+          {/* Support */}
+          <div className="col-6 col-md-3 mb-4">
+            <p className="fw-bold">Support</p>
+
+            <Link to="/support">Contact</Link>
             <br />
-            <a href="">Fund transfer</a>
+
+            <Link to="/support">Support portal</Link>
             <br />
-            <a href="">60 day challenge</a>
+
+            <Link to="/support">Z-Connect blog</Link>
+            <br />
+
+            <Link to="/pricing">List of charges</Link>
+            <br />
+
+            <Link to="/product">Downloads & resources</Link>
+            <br />
+          </div>
+
+          {/* Account */}
+          <div className="col-6 col-md-3 mb-4">
+            <p className="fw-bold">Account</p>
+
+            <Link to="/signup">Open an account</Link>
+            <br />
+
+            <Link to="/signup">Fund transfer</Link>
+            <br />
+
+            <Link to="/support">60 day challenge</Link>
             <br />
           </div>
         </div>
-        <div className="mt-5 text-muted" style={{ fontSize: "14px" }}>
+
+        {/* Disclaimer */}
+        <div
+          className="mt-4 text-muted"
+          style={{ fontSize: "14px", lineHeight: "1.7" }}
+        >
           <p>
             Zerodha Broking Ltd.: Member of NSE​ &​ BSE – SEBI Registration no.:
             INZ000031633 CDSL: Depository services through Zerodha Securities

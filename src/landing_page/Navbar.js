@@ -1,65 +1,123 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <nav
-      class="navbar navbar-expand-lg border-bottom"
-      style={{ backgroundColor: "#FFF" }}
+      className="navbar navbar-expand-lg border-bottom"
+      style={{ backgroundColor: "#fff" }}
     >
-      <div class="container p-2">
-        <Link class="navbar-brand" to="/">
+      <div className="container p-2">
+
+        {/* Logo */}
+        <Link className="navbar-brand" to="/" onClick={closeMenu}>
           <img
-            src="media/images/logo.svg"
-            style={{ width: "25%" }}
-            alt="Logo"
+            src="/media/images/logo.svg"
+            style={{ width: "130px" }}
+            alt="Zerodha Logo"
           />
         </Link>
+
+        {/* Mobile Menu Button */}
         <button
-          class="navbar-toggler"
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
+          className="navbar-toggler"
+          type="button"
+          onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <form class="d-flex" role="search">
-            <ul class="navbar-nav mb-lg-0">
-              <li class="nav-item">
-                <Link class="nav-link active" aria-current="page" to="/signup">
-                  Signup
-                </Link>
-              </li>
-              <li class="nav-item">
-                <Link class="nav-link active" to="/about">
-                  About
-                </Link>
-              </li>
-              <li class="nav-item">
-                <Link class="nav-link active" to="/product">
-                  Product
-                </Link>
-              </li>
-              <li class="nav-item">
-                <Link class="nav-link active" to="/pricing">
-                  Pricing
-                </Link>
-              </li>
-              <li class="nav-item">
-                <Link class="nav-link active" to="/support">
-                  Support
-                </Link>
-              </li>
-            </ul>
-          </form>
+
+        {/* Menu */}
+        <div
+          className={`navbar-collapse ${
+            menuOpen ? "show" : ""
+          }`}
+          id="navbarSupportedContent"
+        >
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/"
+                onClick={closeMenu}
+              >
+                Home
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/signup"
+                onClick={closeMenu}
+              >
+                Signup
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/login"
+                onClick={closeMenu}
+              >
+                Login
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/about"
+                onClick={closeMenu}
+              >
+                About
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/product"
+                onClick={closeMenu}
+              >
+                Product
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/pricing"
+                onClick={closeMenu}
+              >
+                Pricing
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/support"
+                onClick={closeMenu}
+              >
+                Support
+              </Link>
+            </li>
+
+          </ul>
         </div>
       </div>
     </nav>
   );
 }
 
-export default Navbar; 
+export default Navbar;
