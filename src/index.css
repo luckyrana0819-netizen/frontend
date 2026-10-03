@@ -19,7 +19,7 @@ code {
   background-color: blue;
 } */
 
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -58,4 +58,328 @@ code {
   font-size: 20px;
   border-radius: 10px;
   border: none;
+} */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+}
+
+.row {
+  max-width: 100%;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.nav-link {
+  margin-left: 40px;
+}
+
+/* =========================
+   SUPPORT PAGE
+========================= */
+
+#supportHero {
+  background-color: rgb(56, 126, 209);
+  color: white;
+}
+
+#supportHero a {
+  color: white;
+}
+
+#supportWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 150px;
+}
+
+#supportHero input {
+  padding: 20px 50px;
+  width: 100%;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+}
+
+.ticket-link {
+  text-decoration: none;
+  line-height: 2.5;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 991px) {
+  .nav-link {
+    margin-left: 0;
+    padding: 10px 0;
+  }
+
+  #supportWrapper {
+    margin: 0 50px;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 767px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .row {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Make all old desktop columns full width */
+  .col-6,
+  .col-4,
+  .col-3,
+  .col-8,
+  .col-9 {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+
+  /* Bootstrap responsive columns */
+  .col-md-6,
+  .col-md-5,
+  .col-md-4,
+  .col-md-3,
+  .col-md-8,
+  .col-md-7 {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Images */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Headings */
+  h1 {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+
+  h2 {
+    font-size: 22px;
+    line-height: 1.4;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* Remove excessive desktop padding */
+  .p-5 {
+    padding: 20px !important;
+  }
+
+  .p-md-5 {
+    padding: 20px !important;
+  }
+
+  /* Images / sections centered */
+  .text-center img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Buttons */
+  .btn {
+    max-width: 90%;
+  }
+
+  /* Hero signup buttons */
+  a.btn,
+  button.btn {
+    width: 200px !important;
+    max-width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Navbar */
+  .navbar .container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  .navbar-collapse {
+    width: 100%;
+  }
+
+  .navbar-nav {
+    width: 100%;
+  }
+
+  .navbar-nav .nav-item {
+    width: 100%;
+  }
+
+  .nav-link {
+    margin-left: 0 !important;
+    padding: 10px 0 !important;
+  }
+
+  /* Support */
+  #supportWrapper {
+    display: block;
+    margin: 0 15px;
+  }
+
+  #supportHero input {
+    padding: 15px 20px;
+    width: 100%;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+
+  #supportHero h1 {
+    font-size: 24px;
+  }
+
+  #supportHero h4 {
+    font-size: 20px;
+  }
+
+  #supportHero .row {
+    margin: 0 !important;
+    padding: 20px !important;
+  }
+
+  .ticket-link {
+    line-height: 2.2;
+  }
+
+  /* Footer */
+  footer .row {
+    width: 100%;
+  }
+
+  footer [class*="col-"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    margin-bottom: 20px;
+  }
+
+  /* Pricing cards */
+  .border {
+    margin-bottom: 15px;
+  }
+
+  /* Tables */
+  .table {
+    width: 100%;
+    font-size: 13px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+  .container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  #supportWrapper {
+    margin: 0 10px;
+  }
+
+  #supportHero input {
+    padding: 14px 15px;
+    font-size: 15px;
+  }
+
+  .p-5,
+  .p-md-5 {
+    padding: 15px !important;
+  }
+
+  .btn {
+    font-size: 16px !important;
+  }
 }
